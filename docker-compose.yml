@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  safeagent:
+    build: .
+    ports:
+      - "${PORT:-8080}:8080"
+    env_file:
+      - .env
+    volumes:
+      - ./faiss_index:/app/faiss_index
+      - ./safety_log.jsonl:/app/safety_log.jsonl
+    environment:
+      - PORT=8080
