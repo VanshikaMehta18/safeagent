@@ -1,0 +1,42 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "constitution-guard"
+version = "0.1.0"
+description = "Constitutional AI middleware — wrap any agent with local safety classifiers and optional LLM arbitration"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "SafeAgent Contributors" }]
+keywords = ["ai-safety", "constitutional-ai", "middleware", "agents", "jailbreak", "pii", "toxicity"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "pydantic>=2.0",
+    "pydantic-settings>=2.0",
+]
+
+[project.optional-dependencies]
+classifiers = ["transformers>=4.40", "torch"]
+llm = ["google-genai"]
+langgraph = ["langgraph"]
+all = ["constitution-guard[classifiers,llm,langgraph]"]
+dev = ["pytest", "pytest-asyncio"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/constitution_guard"]
+
+[tool.hatch.build.targets.editable]
+dev-mode-dirs = ["src"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

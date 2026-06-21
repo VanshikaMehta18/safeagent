@@ -4,7 +4,9 @@ from __future__ import annotations
 
 import logging
 
-from api.schemas import FinalResponse, IntentCategory, Verdict
+from api.schemas import FinalResponse, IntentCategory
+from constitution_guard.classifiers.crisis import CRISIS_MESSAGE
+from constitution_guard.models import Verdict
 from graph.state import AgentState
 from observability.langsmith_tracer import traceable
 from safety import logger as safety_logger
@@ -22,12 +24,6 @@ HARM_SUBTYPE_REFERRALS: dict[str, str] = {
     "other": "a qualified professional in the relevant field",
 }
 
-CRISIS_MESSAGE = (
-    "I'm concerned about what you're going through, and you don't have to face this alone. "
-    "Please reach out for help — call or text 988 (Suicide & Crisis Lifeline), available 24/7. "
-    "If you are in immediate danger, call 911 or go to your nearest emergency room. "
-    "Talking to a counselor, trusted friend, or family member can make a real difference."
-)
 
 HARMFUL_BLOCK_TEMPLATE = (
     "I'm unable to help with this request because it involves {concern}. "

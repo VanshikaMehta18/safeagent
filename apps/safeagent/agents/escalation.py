@@ -26,9 +26,9 @@ BLOCK_REASON_MAP: dict[str, str] = {
     "honesty": "concerns about accuracy or truthfulness of the information",
     "autonomy_preservation": "risk of manipulating or undermining your decision-making",
     "privacy": "risk of exposing or mishandling private information",
+    "legality": "attempted safety bypass or facilitation of illegal activity",
     "scope_appropriateness": "this topic requires expertise beyond what an AI assistant can safely provide",
-    "reversibility": "potential for irreversible consequences if acted upon",
-    "consent_alignment": "the response does not appropriately align with your request",
+    "fairness": "the response does not fairly or appropriately address your request",
 }
 
 REWRITE_SYSTEM = (

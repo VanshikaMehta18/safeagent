@@ -10,7 +10,7 @@ from typing import Literal
 from langgraph.graph import END, StateGraph
 
 from agents.escalation import run_escalation
-from agents.intent_classifier import INTENT_CONFIDENCE_THRESHOLD, run_intent_classifier
+from agents.intent_classifier import run_intent_classifier
 from agents.intent_handlers import run_crisis_handler, run_harmful_block
 from agents.planner import run_planner
 from agents.researcher import run_researcher
@@ -74,8 +74,7 @@ def route_after_intent(
         return "crisis_handler"
 
     if intent.category in (IntentCategory.HARMFUL, IntentCategory.JAILBREAK):
-        if intent.confidence >= INTENT_CONFIDENCE_THRESHOLD:
-            return "harmful_block"
+        return "harmful_block"
 
     return "planner"
 

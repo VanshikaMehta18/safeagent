@@ -1,3 +1,4 @@
+-e ../../constitution-guard[classifiers,llm,langgraph]
 google-genai
 langgraph
 langchain

@@ -97,10 +97,12 @@ class SafetyScore(BaseModel):
     """Aggregated safety arbitration result."""
 
     overall_score: float = Field(..., ge=0.0, le=1.0)
-    principle_scores: dict[str, PrincipleScore]
+    principle_scores: dict[str, PrincipleScore | None]
     verdict: Verdict
     flagged_principles: list[str]
     reasoning_trace: list[str]
+    scored_principles: list[str] = Field(default_factory=list)
+    unscored_principles: list[str] = Field(default_factory=list)
 
 
 class FinalResponse(BaseModel):
