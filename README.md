@@ -1,4 +1,4 @@
-# SafeAgent Monorepo
+# SafeAgent
 
 This repository contains two projects:
 
